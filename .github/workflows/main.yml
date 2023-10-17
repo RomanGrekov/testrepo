@@ -15,13 +15,11 @@ jobs:
 
     - name: Build
       run: |
-        cd pkg
-        dpkg-deb --build test
-        cd ../
+        dpkg-deb --build test-service
         echo "Release notes" > body.md
 
     - name: Release
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "pkg/test.pkg"
+        artifacts: "test-service.pkg"
         bodyFile: "body.md"

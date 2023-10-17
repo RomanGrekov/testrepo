@@ -16,7 +16,12 @@ jobs:
     - name: Build
       run: |
         dpkg-deb --build test-service
-        echo "Release notes" > body.md
+        cat > release-notes.md <<- EOF
+        ### Release notes
+        In this version we change:
+          - Very important thing
+          - Even more important thing
+        EOF
 
     - name: Bump version and push tag
       id: tag_version
@@ -29,4 +34,4 @@ jobs:
       with:
         tag: ${{ steps.tag_version.outputs.new_tag }}
         artifacts: "test-service.deb"
-        bodyFile: "body.md"
+        bodyFile: "release-notes.md"

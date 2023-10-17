@@ -17,7 +17,6 @@ jobs:
       run: |
         dpkg-deb --build test-service
         echo "Release notes" > body.md
-        ls -la
 
     - name: Bump version and push tag
       id: tag_version
@@ -29,5 +28,5 @@ jobs:
       uses: ncipollo/release-action@v1
       with:
         tag: ${{ steps.tag_version.outputs.new_tag }}
-        artifacts: "test-service.pkg"
+        artifacts: "test-service.deb"
         bodyFile: "body.md"

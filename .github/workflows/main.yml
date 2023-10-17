@@ -1,0 +1,27 @@
+name: Build
+
+on: 
+  push:
+    branches: [main]
+
+jobs:
+
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build
+      run: |
+        cd pkg
+        dpkg-deb --build test
+        cd ../
+        echo "Release notes" > body.md
+
+    - name: Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "pkg/test.pkg"
+        bodyFile: "body.md"

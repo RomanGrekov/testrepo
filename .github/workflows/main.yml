@@ -17,6 +17,7 @@ jobs:
       run: |
         dpkg-deb --build test-service
         echo "Release notes" > body.md
+        ls -la
 
     - name: Bump version and push tag
       id: tag_version

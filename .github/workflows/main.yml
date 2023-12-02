@@ -15,23 +15,17 @@ jobs:
 
     - name: Build
       run: |
-        dpkg-deb --build test-service
-        cat > release-notes.md <<- EOF
-        ### Release notes
-        In this version we change:
-          - Very important thing
-          - Even more important thing
-        EOF
+        docker build -t testimage .
 
-    - name: Bump version and push tag
-      id: tag_version
-      uses: mathieudutour/github-tag-action@v6.1
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+    #- name: Bump version and push tag
+    #  id: tag_version
+    #  uses: mathieudutour/github-tag-action@v6.1
+    #  with:
+    #    github_token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Release
-      uses: ncipollo/release-action@v1
-      with:
-        tag: ${{ steps.tag_version.outputs.new_tag }}
-        artifacts: "test-service.deb"
-        bodyFile: "release-notes.md"
+    #- name: Release
+    #  uses: ncipollo/release-action@v1
+    #  with:
+    #    tag: ${{ steps.tag_version.outputs.new_tag }}
+    #    artifacts: "test-service.deb"
+    #    bodyFile: "release-notes.md"

@@ -13,9 +13,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build
-      run: |
-        docker build -t testimage .
+    #- name: Build
+    #  run: |
+    #    docker build -t testimage .
+    - name: Build and push
+       uses: docker/build-push-action@v5
+       with:
+         push: false
+         tags: mysql-connector:latest
 
     #- name: Bump version and push tag
     #  id: tag_version

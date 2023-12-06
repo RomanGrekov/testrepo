@@ -1,10 +1,11 @@
 import unittest
-from src.shop import PetShop
+from shop import PetShop
 
 
 class TestMysql(unittest.TestCase):
     def setUp(self):
-        self.shop = PetShop("127.0.0.1", "root", "qwerty1234")
+        self.shop = PetShop("mysql", "root", "qwerty1234")
+        print("Connected!!!!!!!!!!!!!!!!!!!!")
     
     def test_create_item(self):
         self.shop.create_shop()
@@ -17,4 +18,5 @@ class TestMysql(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    print("Start unit test!!!!!!!!!!!!!!!!!!!!!!!")
     unittest.main()

@@ -69,9 +69,10 @@ jobs:
     
     - name: Test coverage
       run: |
-        mkdir coverage
+        mkdir -p coverage
         docker compose up -d mysql
         docker compose up app-coverage
+        ls -la coverage
         git config --global user.email "roman.grekov88@gmail.com"
         git config --global user.name "Roman Grekov"
         git add coverage

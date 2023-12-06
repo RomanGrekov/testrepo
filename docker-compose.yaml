@@ -13,7 +13,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_tests
-    entrypoint: "python3 -m coverage run -m unittest && python3 -m coverage html"
+    entrypoint: bash -c "python3 -m coverage run -m unittest && python3 -m coverage html"
     volumes:
       - ./coverage:/workdir/htmlcov
 

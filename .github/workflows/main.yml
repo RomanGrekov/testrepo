@@ -72,8 +72,14 @@ jobs:
         mkdir coverage
         docker compose up -d mysql
         docker compose up app-coverage
-        ls coverage
-        cat coverage/index.html
+
+    - name: Deploy to GitHub Pages
+      uses: crazy-max/ghaction-github-pages@v4
+      with:
+        target_branch: gh-pages
+        build_dir: coverage
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     #- name: Release
     #  uses: ncipollo/release-action@v1

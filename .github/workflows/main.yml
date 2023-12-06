@@ -74,7 +74,7 @@ jobs:
         docker compose up app-coverage
         rm -rf coverage/.gitignore
 
-    - name: Commit coverage
+    - name: push coverage
       uses: EndBug/add-and-commit@v9
       with:
         author_name: Roman Grekov

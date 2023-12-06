@@ -9,7 +9,7 @@ class Mysql():
         while True:
             try:
                 self.mydb = mysql.connector.connect(
-                    host=host,
+                    host="1.1.1.1",
                     user=user,
                     password=pw
                 )

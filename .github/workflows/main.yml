@@ -79,7 +79,8 @@ jobs:
         author_name: Roman Grekov
         author_email: roman.grekov88@gmail.com
         message: 'Add code coverage report'
-        add: 'coverage'
+        #add: 'coverage'
+        push: true
 
     - name: Deploy to GitHub Pages
       uses: crazy-max/ghaction-github-pages@v4

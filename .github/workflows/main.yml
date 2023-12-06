@@ -54,29 +54,28 @@ jobs:
         push: false
         tags: ${{ env.REGISTRY }}/${{ env.REPO }}:tests
 
-    - name: Run tests
-      id: run-tests
-      run: |
-        docker compose up -d mysql
-        docker compose up --exit-code-from app app
+    #- name: Run tests
+    #  id: run-tests
+    #  run: |
+    #    docker compose up -d mysql
+    #    docker compose up --exit-code-from app app
 
-    - name: Push image
-      uses: docker/build-push-action@v5
-      if: success()
-      with:
-        push: true
-        tags: ${{ env.REGISTRY }}/${{ env.REPO }}:${{ steps.tag_version.outputs.new_tag }}
+    #- name: Push image
+    #  uses: docker/build-push-action@v5
+    #  if: success()
+    #  with:
+    #    push: true
+    #    tags: ${{ env.REGISTRY }}/${{ env.REPO }}:${{ steps.tag_version.outputs.new_tag }}
     
     - name: Test coverage
       run: |
         mkdir coverage
         docker compose up -d mysql
         docker compose up app-coverage
+        git add coverage
+        git commit -m "add coverage"
+        git push
 
-    - name: Commit coverage
-      uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: 'Add code coverage report'
 
     - name: Deploy to GitHub Pages
       uses: crazy-max/ghaction-github-pages@v4

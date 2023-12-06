@@ -74,13 +74,9 @@ jobs:
         docker compose up app-coverage
 
     - name: Commit coverage
-      uses: EndBug/add-and-commit@v9
+      uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        author_name: Roman Grekov
-        author_email: roman.grekov88@gmail.com
-        message: 'Add code coverage report'
-        #add: 'coverage'
-        push: true
+        commit_message: 'Add code coverage report'
 
     - name: Deploy to GitHub Pages
       uses: crazy-max/ghaction-github-pages@v4

@@ -5,7 +5,7 @@ class Mysql():
     def __init__(self, host, user, pw):
         max_retries = 30
         retries = 0
-        return
+
         while True:
             try:
                 self.mydb = mysql.connector.connect(

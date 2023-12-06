@@ -7,6 +7,16 @@ services:
       context: .
       dockerfile: Dockerfile_tests
 
+  app-coverage:
+    tty: true
+    image: ghcr.io/romangrekov/testrepo:tests
+    build:
+      context: .
+      dockerfile: Dockerfile_tests
+    entrypoint: "python3 -m coverage run -m unittest && python3 -m coverage html"
+    volumes:
+      - ./coverage:/workdir/htmlcov
+
   mysql:
     image: mysql:5.7.44
     environment:

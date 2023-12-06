@@ -1,5 +1,7 @@
 FROM ghcr.io/romangrekov/testrepo:latest
 
+RUN pip3 install coverage
+
 COPY tests /workdir
 
 ENTRYPOINT [ "python3", "tests.py" ]

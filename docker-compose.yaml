@@ -8,6 +8,7 @@ services:
       dockerfile: Dockerfile_tests
 
   app-coverage:
+    container_name: app-coverage
     tty: true
     image: ghcr.io/romangrekov/testrepo:tests
     build:

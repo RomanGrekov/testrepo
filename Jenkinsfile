@@ -5,7 +5,7 @@ pipeline {
           steps {
               sh """
               #!/bin/bash
-              echo "Hello from pipeline"
+              ls -la ./
               """
           }
       }

@@ -3,5 +3,8 @@ FROM ghcr.io/romangrekov/testrepo:latest
 RUN pip3 install coverage
 
 COPY tests /workdir
+RUN useradd -ms /bin/bash test
+RUN chown -R test:test /workdir
+USER test
 
 ENTRYPOINT [ "python3", "tests.py" ]
